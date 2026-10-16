@@ -1,0 +1,336 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f0ea;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #2c221e;
+}
+
+/* Cabeçalho Fiel à Imagem */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e130d;
+  padding: 20px 60px;
+  width: 100%;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.logo .smart {
+  color: #ffffff;
+}
+
+.logo .coffee {
+  color: #e0833a;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: #e0833a;
+}
+
+/* Banner Superior Hero */
+.top-banner {
+  padding: 50px 60px;
+  background-color: #f6f0ea;
+}
+
+.hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-text-box {
+  flex: 1;
+}
+
+.hero-text-box h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: #3b2820;
+  margin-bottom: 5px;
+  letter-spacing: -0.5px;
+}
+
+.hero-text-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #8c684d;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 25px;
+}
+
+.hero-text-box p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4a3c35;
+  max-width: 500px;
+}
+
+.hero-img-box {
+  flex: 1;
+}
+
+.hero-img-box img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(59, 40, 32, 0.15);
+}
+
+/* Seção Sobre Nós */
+.sec-sobre {
+  padding: 70px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sobre-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.sobre-img {
+  flex: 1;
+}
+
+.sobre-img img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.sobre-text {
+  flex: 1;
+  background-color: #3b2820;
+  color: #fff;
+  padding: 45px;
+  border-radius: 8px;
+}
+
+.sobre-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #e8c8a1;
+}
+
+.sobre-text p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #e0d5ce;
+}
+
+/* Seção Nossos Cafés */
+.sec-produtos {
+  padding: 70px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sec-produtos h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  color: #3b2820;
+  margin-bottom: 45px;
+  font-family: 'Playfair Display', serif;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.card-item {
+  background-color: #ebdcd0;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
+}
+
+.card-img img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 25px;
+}
+
+.card-content h4 {
+  color: #3b2820;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.card-content p {
+  font-size: 0.92rem;
+  color: #4a3c35;
+  line-height: 1.6;
+}
+
+/* Seção Nosso Ambiente */
+/* Seção Nosso Ambiente */
+.sec-ambiente {
+  padding: 70px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sec-ambiente h2 {
+  font-size: 2.2rem;
+  color: #3b2820;
+  margin-bottom: 25px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Layout em duas colunas: texto de um lado, imagem do outro */
+.ambiente-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.ambiente-box {
+  flex: 1;
+  background-color: #261b17;
+  color: #d1c4b8;
+  padding: 45px;
+  border-radius: 8px;
+  line-height: 1.8;
+  font-size: 1.02rem;
+}
+
+.ambiente-img {
+  flex: 1;
+}
+
+.ambiente-img img {
+  width: 100%;
+  height: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Rodapé / Contato */
+.footer-sec {
+  background-color: #1a120e;
+  color: #fff;
+  padding: 70px 60px 30px 60px;
+  margin-top: 40px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto 50px auto;
+}
+
+.footer-logo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #3b2820;
+}
+
+.footer-info h3 {
+  font-family: 'Playfair Display', serif;
+  color: #e8c8a1;
+  font-size: 2rem;
+  margin-bottom: 18px;
+}
+
+.footer-info p {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: #d1c4b8;
+}
+
+.footer-info h4 {
+  margin-top: 25px;
+  color: #e8c8a1;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+}
+
+.footer-subnav {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  border-top: 1px solid #33241c;
+  padding-top: 25px;
+}
+
+.footer-subnav a {
+  color: #8c786a;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-subnav a:hover {
+  color: #e8c8a1;
+}
+
+/* Responsividade */
+@media (max-width: 850px) {
+  .navbar, .hero-header, .sobre-container, .grid-cards, .footer-container {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .nav-menu ul {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

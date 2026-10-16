@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Horários SENAI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 450px;
+      width: 100%;
+    }
+    h2 {
+      color: #0056b3;
+      text-align: center;
+      margin-top: 0;
+    }
+    .campo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+    }
+    input {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      width: 110px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #003d80;
+    }
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #eef5ff;
+      border-radius: 8px;
+      display: none;
+    }
+    .resultado h3 {
+      margin-top: 0;
+      color: #0056b3;
+    }
+    ul {
+      padding-left: 20px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Rotina SENAI</h2>
+
+  <div class="campo"><label>Entrada:</label><input type="time" id="entrada" value="07:30"></div>
+  <div class="campo"><label>Início Café Manhã:</label><input type="time" id="cafeMInicio" value="09:35"></div>
+  <div class="campo"><label>Fim Café Manhã:</label><input type="time" id="cafeMFim" value="09:55"></div>
+  <div class="campo"><label>Início Almoço:</label><input type="time" id="almocoInicio" value="11:30"></div>
+  <div class="campo"><label>Fim Almoço:</label><input type="time" id="almocoFim" value="13:00"></div>
+  <div class="campo"><label>Início Café Tarde:</label><input type="time" id="cafeTInicio" value="15:20"></div>
+  <div class="campo"><label>Fim Café Tarde:</label><input type="time" id="cafeTFim" value="15:40"></div>
+  <div class="campo"><label>Saída:</label><input type="time" id="saida" value="17:00"></div>
+
+  <button onclick="calcular()">Calcular Tempo</button>
+
+  <div class="resultado" id="painelResultado">
+    <h3>Resumo</h3>
+    <p>📌 <strong>Tempo Total no SENAI:</strong> <span id="resTotal"></span></p>
+    <p>📖 <strong>Tempo de Estudo:</strong> <span id="resEstudo"></span></p>
+    <p>☕ <strong>Tempo de Pausas:</strong> <span id="resPausas"></span></p>
+    <hr>
+    <strong>Blocos de Aula:</strong>
+    <ul>
+      <li>1º Bloco: <span id="b1"></span></li>
+      <li>2º Bloco: <span id="b2"></span></li>
+      <li>3º Bloco: <span id="b3"></span></li>
+      <li>4º Bloco: <span id="b4"></span></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function paraMinutos(horarioStr) {
+    const [h, m] = horarioStr.split(':').map(Number);
+    return h * 60 + m;
+  }
+
+  function formatarTempo(minutos) {
+    const h = Math.floor(minutos / 60);
+    const m = minutos % 60;
+    if (h > 0 && m > 0) return `${h}h e ${m}min`;
+    if (h > 0) return `${h}h`;
+    return `${m}min`;
+  }
+
+  function calcular() {
+    const entrada = paraMinutos(document.getElementById('entrada').value);
+    const cafeMInicio = paraMinutos(document.getElementById('cafeMInicio').value);
+    const cafeMFim = paraMinutos(document.getElementById('cafeMFim').value);
+    const almocoInicio = paraMinutos(document.getElementById('almocoInicio').value);
+    const almocoFim = paraMinutos(document.getElementById('almocoFim').value);
+    const cafeTInicio = paraMinutos(document.getElementById('cafeTInicio').value);
+    const cafeTFim = paraMinutos(document.getElementById('cafeTFim').value);
+    const saida = paraMinutos(document.getElementById('saida').value);
+
+    const e1 = cafeMInicio - entrada;
+    const e2 = almocoInicio - cafeMFim;
+    const e3 = cafeTInicio - almocoFim;
+    const e4 = saida - cafeTFim;
+
+    const totalEstudo = e1 + e2 + e3 + e4;
+    const totalPausas = (cafeMFim - cafeMInicio) + (almocoFim - almocoInicio) + (cafeTFim - cafeTInicio);
+    const tempoTotal = saida - entrada;
+
+    document.getElementById('resTotal').innerText = formatarTempo(tempoTotal);
+    document.getElementById('resEstudo').innerText = formatarTempo(totalEstudo);
+    document.getElementById('resPausas').innerText = formatarTempo(totalPausas);
+
+    document.getElementById('b1').innerText = formatarTempo(e1);
+    document.getElementById('b2').innerText = formatarTempo(e2);
+    document.getElementById('b3').innerText = formatarTempo(e3);
+    document.getElementById('b4').innerText = formatarTempo(e4);
+
+    document.getElementById('painelResultado').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
